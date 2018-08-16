@@ -56,7 +56,7 @@ def cli(ctx, config, outfile, print):
 ## employee identifier or search string(s), then do find or
 ## get by ID accordingly
 
-# @cli.command()
+ @cli.command()
 # @click.option('--search-type', type=click.Choice['find', 'eid'],
 #                help='Whether to use search strings in the find operation or '
 #                'search by employee identifier')
@@ -84,10 +84,10 @@ def cli(ctx, config, outfile, print):
 #               default=False,
 #               help='API Operation: FindAddresses',
 #               type=click.BOOL)
-# @click.option('--terms',
-#               default=False,
-#               help='API Operation: FindTerminations',
-#               type=click.BOOL)
+ @click.option('--terms',
+               default=False,
+               help='API Operation: FindTerminations',
+               type=click.BOOL)
 # @click.option('--phones',
 #               default=False,
 #               help='API Operation: FindPhoneInformations',

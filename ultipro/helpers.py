@@ -31,14 +31,14 @@ def backoff_hdlr_with_args(details):
           "calling function {target} with args {args} and kwargs "
           "{kwargs}".format(**details))
 
-def read_conf(conf):
-    parser = configparser.ConfigParser()
-    parser.read(conf)
-    rv = {}
-    for section in parser.sections():
-        for key, value in parser.items(section):
-            rv[f"{section}.{key}"] = value
-    return rv
+#def read_conf(conf):
+#    parser = configparser.ConfigParser()
+#    parser.read(conf)
+#    rv = {}
+#    for section in parser.sections():
+#        for key, value in parser.items(section):
+#            rv[f"{section}.{key}"] = value
+#    return rv
 
 def serialize(response):
     return zeep.helpers.serialize_object(response)

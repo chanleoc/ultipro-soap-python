@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "required":[
+        "base_url",
+        "username",
+        "#password",
+        "#api_key",
+        "#customer_api_key"
+    ],
+    "properties":{
+        "base_url":{
+            "title": "Base URL",
+            "type": "string",
+            "description": "Service URL",
+            "default": "https://",
+            "propertyOrder": 1
+        },
+        "username": {
+            "title": "Username",
+            "type": "string",
+            "propertyOrder": 2
+        },
+        "#password": {
+            "title": "Password",
+            "type": "string",
+            "propertyOrder": 3
+        },
+        "#api_key": {
+            "title": "Client API Key",
+            "type": "string",
+            "propertyOrder": 4
+        },
+        "#customer_api_key": {
+            "title": "Customer API Key",
+            "type": "string",
+            "propertyOrder": 5
+        }
+    }
+}

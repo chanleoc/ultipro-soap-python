@@ -1,13 +1,13 @@
 from zeep import Client as Zeep
 from zeep import xsd
-from ultipro.helpers import backoff_hdlr
+#from helpers import backoff_hdlr
 import requests
-import backoff # Helps handle intermittent 405 errors from server
+#import backoff # Helps handle intermittent 405 errors from server
 import logging
 
 endpoint = 'LoginService'
 
-@backoff.on_exception(backoff.expo, requests.exceptions.HTTPError, max_tries=8, on_backoff=backoff_hdlr)
+#@backoff.on_exception(backoff.expo, requests.exceptions.HTTPError, max_tries=8, on_backoff=backoff_hdlr)
 def authenticate(client):
     login_header = {
         'UserName': client.username,
@@ -17,9 +17,10 @@ def authenticate(client):
     }
 
     # Log in and get session token
-    zeep_client = Zeep(f"{client.base_url}{endpoint}")
+    zeep_client = Zeep("{0}{1}".format(client.base_url, endpoint))
     result = zeep_client.service.Authenticate(_soapheaders=login_header)
     client.token = result['Token']
+    #logging.info(result)
 
     # Create xsd ComplexType header - http://docs.python-zeep.org/en/master/headers.html
     header = xsd.ComplexType([

@@ -1,10 +1,12 @@
 from zeep import Client as Zeep
 from zeep import xsd
+import logging
 
-endpoint = '/EmployeeTermination'
+endpoint = 'EmployeeTermination'
 
 def find_terminations(client, query):
-    zeep_client = Zeep(f"{client.base_url}{endpoint}")
+    logging.info("SOAP endpoint: {0}{1}".format(client.base_url, endpoint))
+    zeep_client = Zeep("{0}{1}".format(client.base_url, endpoint))
     response = zeep_client.service.FindTerminations(
         _soapheaders=[client.session_header],
         query=query)
@@ -12,7 +14,7 @@ def find_terminations(client, query):
     return response['Results']
 
 def get_termination_by_employee_identifier(client, employee_identifier):
-    zeep_client = Zeep(f"{client.base_url}{endpoint}")
+    zeep_client = Zeep("{0}{1}".format(client.base_url, endpoint))
     if 'EmployeeNumber' in employee_identifier:
         element = zeep_client.get_element('ns6:EmployeeNumberIdentifier')
         obj = element(**employee_identifier)
