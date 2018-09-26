@@ -19,6 +19,7 @@ def authenticate(client):
     # Log in and get session token
     zeep_client = Zeep("{0}{1}".format(client.base_url, endpoint))
     result = zeep_client.service.Authenticate(_soapheaders=login_header)
+
     client.token = result['Token']
     #logging.info(result)
 

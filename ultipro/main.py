@@ -202,6 +202,8 @@ def main():
 
     client = create_client()
     login.authenticate(client)
+    logging.info("Login Successful.")
+
     query = {}
     query["PageSize"]="100"
     pagenumber = 1
